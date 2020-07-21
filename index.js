@@ -134,26 +134,29 @@ inquirer
         }
         
         const README = 
-        `${answers.appName}
-        Table of Contents:
+        `#${answers.appName}
+        ##Table of Contents:
         - Description
         - Installation
         - Usage
         - Contributers
-        Description
+
+        ##Description
         ${answers.description}
-        Installation
+
+        ##Installation
         ${install}
         
-        Usage
+        ##Usage
         As a ${answers.whoFor}, I want to ${answers.usage}
-       ${credit}${licence}
-       ${names}
-       ${email}
-       ${profilePic}`
+
+        ${credit}${licence}
+        ${names}
+        ${email}
+        ${profilePic}`
         
 
-        fs.writeFile("README.md", README, function(err) {
+        fs.writeFile("Generated_README.md", README, function(err) {
 
         if (err) {
             return console.log(err);
