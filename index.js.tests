@@ -62,15 +62,14 @@ inquirer
             name: "credits1",
         },
     ])
-    .then(async answers => {
-        const queryUrl = "https://api.github.com/users/" + answers.username;
+    .then(function({ username }) {
+        const queryUrl = `https://api.github.com/users/${username}`;
         axios
         .get(queryUrl)
         .then(function(res) {
         const names = res.data.name
         const email = res.data.email
         const profilePic = res.data.avatar_url
-        
 
         if ("credits1" === "yes") {
             inquirer
@@ -108,7 +107,7 @@ inquirer
         if ("installation1" === "yes") {
             var install = 
             `These are the software you'll need to install:
-            ${answers.installation2}`
+            ${installation2}`
         }
         else {
             var install = "You don't need to install any additional software."
@@ -116,7 +115,7 @@ inquirer
         if ("credits1" === "yes") {
             var credit = 
             `Contributers:
-            ${answers.credits2}`
+            ${credits2}`
         }
         else {
             var credit = ""
@@ -126,7 +125,7 @@ inquirer
             `
             
             licence:
-            ${answers.licence2}
+            ${licence2}
             `
         }
         else {
@@ -134,19 +133,19 @@ inquirer
         }
         
         const README = 
-        `${answers.appName}
+        `${appName}
         Table of Contents:
         - Description
         - Installation
         - Usage
         - Contributers
         Description
-        ${answers.description}
+        ${description}
         Installation
         ${install}
         
         Usage
-        As a ${answers.whoFor}, I want to ${answers.usage}
+        As a ${whoFor}, I want to ${usage}
        ${credit}${licence}
        ${names}
        ${email}
